@@ -1,7 +1,7 @@
-let canvas = document.getElementById("snake");
-let context = canvas.getContext("2d");
+let canvas = document.getElementById("snake");//criar elemento que irá rodar o jogo
+let context = canvas.getContext("2d");//...
 let box = 32;
-let snake = [];
+let snake = [];//criar cobrinha como lista, já que ela vai ser uma série de coordenadas, que quando pintadas, criam os quadradinhos
 snake[0] = {
     x: 8 * box,
     y: 8 * box
@@ -15,7 +15,7 @@ let food = {
 //creat background box
 function createBG() {
     context.fillStyle = "lightgreen";
-    context.fillRect(0, 0, 16 * box, 16 * box);
+    context.fillRect(0, 0, 16 * box, 16 * box);//desenha o retângulo usando x e y e a largura e altura setadas
 }
 
 //creat snake
@@ -67,7 +67,7 @@ function startGame() {
     if (direction == "down") snakeY += box;
 
     if(snakeX != food.x || snakeY != food.y){
-        snake.pop();
+        snake.pop();//pop tira o ultimo elemento da lista
     }
     else{
         food.x = Math.floor(Math.random() * 15 + 1) * box,
@@ -79,7 +79,7 @@ function startGame() {
         y: snakeY
     }
 
-    snake.unshift(newHead);
+    snake.unshift(newHead);//método unshift adiciona como primeiro quadradinho da cobrinha
 }
 
 let game =  setInterval(startGame, 100);
